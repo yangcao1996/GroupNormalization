@@ -1,13 +1,14 @@
-from torch import nn
+import torch.nn as nn
 import torch
+from torch.autograd import Variable
 
 class GroupNormalization(nn.Module):
 	"""for GroupNormalization"""
 	def __init__(self, ChannelNum, GroupNum = 32, eps = 1e-10):
 		super(GroupNormalization, self).__init__()
 		self.GroupNum = GroupNum
-		self.gamma = nn.Parameter(torch.ones(ChannnelNum, 1, 1))
-		self.beta = nn.Parameter(torch.zeros(ChannnelNum, 1, 1))
+		self.gamma = nn.Parameter(torch.ones(ChannelNum, 1, 1))
+		self.beta = nn.Parameter(torch.zeros(ChannelNum, 1, 1))
 		self.eps =  eps
 
 	def forward(self, x):
